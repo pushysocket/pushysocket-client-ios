@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class PSConversationViewModel;
+
 @interface PSConversationController : UICollectionViewController
+
+@property (nonatomic, strong) PSConversationViewModel *conversationViewModel;
 
 @end

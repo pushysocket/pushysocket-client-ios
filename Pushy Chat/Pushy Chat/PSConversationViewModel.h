@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class PSClient;
+
 @interface PSConversationViewModel : NSObject
+
+@property (nonatomic, strong) PSClient * client;
+
+@property (nonatomic, strong) NSMutableArray *messages;
+
+- (RACSignal *)rac_signalForMessageReceived;
 
 @end

@@ -10,6 +10,8 @@
 
 #import "PSConversationMessageCell.h"
 
+#import "PSConversationViewModel.h"
+
 #import "PSMessage.h"
 
 @interface PSConversationController ()
@@ -30,7 +32,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    [self.conversationViewModel.rac_signalForMessageReceived subscribeNext:^(PSMessage *message) {
+        NSLog(@"Message: '%@'", message.message);
+    }];
 }
 
 - (void)didReceiveMemoryWarning

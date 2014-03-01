@@ -8,6 +8,11 @@
 
 #import "PSFriendsListController.h"
 
+#import "PSClient.h"
+
+#import "PSConversationViewModel.h"
+#import "PSConversationController.h"
+
 @interface PSFriendsListController ()
 
 @end
@@ -48,6 +53,21 @@
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"playerCell" forIndexPath:indexPath];
     
     return cell;
+}
+
+#pragma mark - UIViewController Methods
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    PSConversationViewModel *conversationViewModel = [[PSConversationViewModel alloc] init];
+    
+    PSClient *client = [[PSClient alloc] init];
+    
+    client.delegate = conversationViewModel;
+    conversationViewModel.client = client;
+    
+    PSConversationController *conversationController = (PSConversationController *)segue.destinationViewController;
+    
+    conversationController.conversationViewModel = conversationViewModel;
 }
 
 @end

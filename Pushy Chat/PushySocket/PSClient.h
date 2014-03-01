@@ -8,6 +8,26 @@
 
 #import <Foundation/Foundation.h>
 
+@class PSClient;
+@class PSMessage;
+
+@protocol PSClientDelegate <NSObject>
+
+- (void)clientDidConnectToServer:(PSClient *)theClient ;
+- (void)clientDidDisconnectToServer:(PSClient *)theClient;
+
+- (void)client:(PSClient *)theClient didReceiveMessage:(PSMessage *)aMessage;
+
+@end
+
 @interface PSClient : NSObject
+
+@property (nonatomic, copy, readonly) NSString *host;
+@property (nonatomic, copy, readonly) NSString *port;
+@property (nonatomic, assign, getter = isConnected) BOOL connected;
+
+@property (nonatomic, weak) id<PSClientDelegate> delegate;
+
+- (void)sendMessage:(NSString *)message;
 
 @end

@@ -10,6 +10,7 @@
                 <navigationController definesPresentationContext="YES" id="APF-jo-CGc" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="M8X-d8-Wdm">
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.32549019607843138" green="0.65098039215686276" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="8Wk-N8-5f3" kind="relationship" relationship="rootViewController" id="jDT-Qq-qD2"/>
@@ -27,7 +28,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" red="0.80813500000000005" green="0.1108280754" blue="0.16985558079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="acH-Nt-ieo">
                             <size key="itemSize" width="319" height="78"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
