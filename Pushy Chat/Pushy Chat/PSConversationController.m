@@ -34,7 +34,11 @@
     [super viewDidLoad];
     
     [self.conversationViewModel.rac_signalForMessageReceived subscribeNext:^(PSMessage *message) {
-        NSLog(@"Message: '%@'", message.message);
+        NSInteger section = 0;
+        NSInteger lastRow = [self.collectionView numberOfItemsInSection:section];
+        NSIndexPath *nextIndexPath = [NSIndexPath indexPathForRow:lastRow inSection:section];
+        
+        [self.collectionView insertItemsAtIndexPaths:@[nextIndexPath]];
     }];
 }
 
@@ -49,35 +53,14 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 30;
+    return [self.conversationViewModel.messages count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     PSConversationMessageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"conversationCell" forIndexPath:indexPath];
-    
-    
-    PSMessage *message;
-    
-    switch (indexPath.row % 3) {
-        case 0:
-            message = [[PSMessage alloc] init];
-            message.message = @"Whats up";
-            break;
-            
-        case 1:
-            message = [[PSMessage alloc] init];
-            message.message = @"I'm hungry";
-            break;
-            
-        default:
-        case 2:
-            message = [[PSMessage alloc] init];
-            message.message = @"You should try that one app";
-            break;
-    }
-    
-    [cell setMessage:message];
+   
+    [cell setMessage:self.conversationViewModel.messages[indexPath.row]];
     
     return cell;
 }

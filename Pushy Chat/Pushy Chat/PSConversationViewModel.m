@@ -23,6 +23,8 @@
     self = [super init];
     if (!self) return self;
     
+    _messages = [NSMutableArray array];
+    
     return self;
 }
 
@@ -50,6 +52,7 @@
 }
 
 - (void)client:(PSClient *)theClient didReceiveMessage:(PSMessage *)aMessage {
+    [self.messages addObject:aMessage];
     [_messageReceivedSubscriber sendNext:aMessage];
 }
 

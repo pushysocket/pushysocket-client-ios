@@ -24,7 +24,8 @@
 
 @property (nonatomic, copy, readonly) NSString *host;
 @property (nonatomic, copy, readonly) NSString *port;
-@property (nonatomic, assign, getter = isConnected) BOOL connected;
+@property (nonatomic, assign, getter = isConnected, readonly) BOOL connected;
+@property (nonatomic, assign, getter = isLoggedIn, readonly) BOOL loggedIn;
 
 @property (nonatomic, weak) id<PSClientDelegate> delegate;
 
