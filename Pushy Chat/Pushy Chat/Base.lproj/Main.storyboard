@@ -7,7 +7,7 @@
         <!--Navigation Controller-->
         <scene sceneID="alz-O9-MKg">
             <objects>
-                <navigationController definesPresentationContext="YES" id="APF-jo-CGc" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="APF-jo-CGc" customClass="CRNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="M8X-d8-Wdm">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="0.57254904508590698" blue="0.79607850313186646" alpha="1" colorSpace="deviceRGB"/>
