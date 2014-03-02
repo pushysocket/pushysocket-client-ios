@@ -60,11 +60,13 @@ static BOOL PushySocketSecure = NO;
 }
 
 - (BOOL)sendMessage:(NSString *)message {
-    //[_socketIO sendEvent:@"message" withData:@[@{@"message":message}]];
-    //[_socketIO sendMessage:message];
-    NSDictionary *payload = @{@"args": @[@{@"message":message}], @"name":@"message"};
+//    if (!_connected || !_loggedIn) return NO;
     
-    [_socketIO sendEvent:@"message" withData:[NSJSONSerialization dataWithJSONObject:payload options:0 error:nil]];
+    [_socketIO sendEvent:@"message" withData:@{@"message":message}];
+    //[_socketIO sendMessage:message];
+    //NSDictionary *payload = @{@"args": @[@{@"message":message}], @"name":@"message"};
+    
+    //[_socketIO sendEvent:@"message" withData:[NSJSONSerialization dataWithJSONObject:payload options:0 error:nil]];
     //[_socketIO sendJSON:payload];
     
     return YES;
@@ -85,6 +87,8 @@ static BOOL PushySocketSecure = NO;
 
 - (void) socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet {
     if ([packet.name isEqualToString:@"message"]) {
+        NSObject *jsonData = packet.dataAsJSON;
+        
 //        NSString *messageBody = packet.data[0][@"message"];
 //        NSString *user = packet.data[0][@"user"][@"name"];
         PSMessage *message = [[PSMessage alloc] init];
