@@ -8,21 +8,37 @@
 
 #import <Foundation/Foundation.h>
 
-//NS_ENUM(NSUInteger, PSMessageType)
-
-typedef NS_ENUM(NSInteger, PSMessageType) {
-    PSMessageTypeBasic,
-    PSMessageTypeJoinNotification,
-    PSMessageTypeLeftNotification,
-};
-
 @protocol PSMessageProtocol <NSObject>
 
-@property (nonatomic, copy) NSString *message;
++ (id<PSMessageProtocol>)messageWithEvent:(NSString *)event andData:(id)data;
+
++ (NSString *)messageType;
+- (NSString *)message;
+- (NSString *)name;
 
 @end
 
-@interface PSMessage : NSObject
+@interface PSMessageFactory : NSObject
+
++ (NSArray *)messagesWithEvent:(NSString *)event andData:(id)data;
+
+@end
+
+@interface PSChatMessage : NSObject < PSMessageProtocol >
+
+@property (nonatomic, copy) NSString *message;
+@property (nonatomic, copy) NSString *name;
+
+@end
+
+@interface PSJoinedMessage : NSObject < PSMessageProtocol >
+
+@property (nonatomic, copy) NSString *message;
+@property (nonatomic, copy) NSString *name;
+
+@end
+
+@interface PSLeftMessage : NSObject < PSMessageProtocol >
 
 @property (nonatomic, copy) NSString *message;
 @property (nonatomic, copy) NSString *name;

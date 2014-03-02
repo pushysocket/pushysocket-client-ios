@@ -21,6 +21,6 @@
 
 @property (nonatomic, strong) NSMutableArray *messages;
 
-- (RACSignal *)rac_signalForMessageReceived;
+- (RACSignal *)rac_signalForMessagesReceived;
 
 @end

@@ -40,6 +40,6 @@ static BOOL PushySocketSecure = NO;
 
 - (BOOL)sendMessage:(NSString *)message { NSAssert(YES, @"Need to use subclass"); return NO; }
 - (BOOL)loginWithName:(NSString *)name { NSAssert(YES, @"Need to use subclass"); return NO; }
-- (void)refreshMessages { NSAssert(YES, @"Need to use subclass"); }
+- (BOOL)refreshMessages { NSAssert(YES, @"Need to use subclass"); return NO; }
 
 @end

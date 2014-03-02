@@ -74,12 +74,16 @@
     [self updateMessageFrame];
     [self.view addSubview:messageView];
     
-    [self.conversationViewModel.rac_signalForMessageReceived subscribeNext:^(PSMessage *message) {
+    [self.conversationViewModel.rac_signalForMessagesReceived subscribeNext:^(NSArray *messages) {
         NSInteger section = 0;
         NSInteger lastRow = [self.collectionView numberOfItemsInSection:section];
-        NSIndexPath *nextIndexPath = [NSIndexPath indexPathForRow:lastRow inSection:section];
+        NSMutableArray *indexPaths = [NSMutableArray array];
         
-        [self.collectionView insertItemsAtIndexPaths:@[nextIndexPath]];
+        for (int c = 0; c < [messages count]; c++) {
+            [indexPaths addObject:[NSIndexPath indexPathForRow:(lastRow + c) inSection:section]];
+        }
+        
+        [self.collectionView insertItemsAtIndexPaths:indexPaths];
     }];
     
     RAC(self.conversationViewModel, messageToSend) = self.messageCreateView.messageToSendLabel.rac_textSignal;
@@ -93,7 +97,7 @@
         NSLog(@"Done");
     }];
     
-
+    [self.conversationViewModel.client refreshMessages];
 }
 
 - (void)didReceiveMemoryWarning

@@ -68,16 +68,9 @@
 //- (void) socketIO:(SocketIO *)socket didReceiveJSON:(SocketIOPacket *)packet;
 
 - (void) socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet {
-    if ([packet.name isEqualToString:@"message"]) {
-        NSObject *jsonData = packet.dataAsJSON;
-        
-        //        NSString *messageBody = packet.data[0][@"message"];
-        //        NSString *user = packet.data[0][@"user"][@"name"];
-        PSMessage *message = [[PSMessage alloc] init];
-        //        message.message = messageBody;
-        //        message.name = user;
-        [self.delegate client:self didReceiveMessage:message];
-    }
+    NSArray *messages = [PSMessageFactory messagesWithEvent:packet.name andData:packet.dataAsJSON];
+    
+    [self.delegate client:self didReceiveMessages:messages];
 }
 
 - (void) socketIO:(SocketIO *)socket didSendMessage:(SocketIOPacket *)packet {

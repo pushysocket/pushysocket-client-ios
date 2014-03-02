@@ -16,7 +16,7 @@
 - (void)clientDidConnectToServer:(PSClient *)theClient ;
 - (void)clientDidDisconnectToServer:(PSClient *)theClient;
 
-- (void)client:(PSClient *)theClient didReceiveMessage:(PSMessage *)aMessage;
+- (void)client:(PSClient *)theClient didReceiveMessages:(NSArray *)messages;
 - (void)client:(PSClient *)theClient didSendMessage:(PSMessage *)aMessage;
 
 @end
@@ -37,6 +37,6 @@
 - (BOOL)sendMessage:(NSString *)message;
 - (BOOL)loginWithName:(NSString *)name;
 
-- (void)refreshMessages;
+- (BOOL)refreshMessages;
 
 @end

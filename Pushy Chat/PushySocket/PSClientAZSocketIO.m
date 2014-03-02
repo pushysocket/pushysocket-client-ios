@@ -29,15 +29,10 @@
     
     @weakify(self)
     [_socketIO setEventRecievedBlock:^(NSString *eventName, id data) {
-        if ([eventName isEqualToString:@"message"]) {
-            @strongify(self)
-            NSString *messageBody = data[0][@"message"];
-            NSString *user = data[0][@"user"][@"name"];
-            PSMessage *message = [[PSMessage alloc] init];
-            message.message = messageBody;
-            message.name = user;
-            [self.delegate client:self didReceiveMessage:message];
-        }
+        @strongify(self);
+        NSArray *messages = [PSMessageFactory messagesWithEvent:eventName andData:data];
+        
+        [self.delegate client:self didReceiveMessages:messages];
     }];
     
     [_socketIO setDisconnectedBlock:^{
@@ -71,6 +66,14 @@
 - (BOOL)sendMessage:(NSString *)message {
     NSError *anError = nil;
     BOOL success = [_socketIO emit:@"message" args:@{@"message":message} error:&anError];
+    if (anError) NSLog(@"anError: %@", anError);
+    
+    return success;
+}
+
+- (BOOL)refreshMessages {
+    NSError *anError = nil;
+    BOOL success = [_socketIO emit:@"refresh" args:nil error:&anError];
     if (anError) NSLog(@"anError: %@", anError);
     
     return success;

@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class PSMessage;
+@class PSChatMessage;
 
 @interface PSConversationMessageCell : UICollectionViewCell
 
-@property (nonatomic, weak) PSMessage *chatMessage;
+@property (nonatomic, weak) PSChatMessage *chatMessage;
 
 @end

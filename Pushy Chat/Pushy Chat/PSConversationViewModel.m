@@ -28,7 +28,7 @@
     return self;
 }
 
-- (RACSignal *)rac_signalForMessageReceived {
+- (RACSignal *)rac_signalForMessagesReceived {
     RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         self.messageReceivedSubscriber = subscriber;
         return [RACDisposable disposableWithBlock:^{
@@ -91,9 +91,9 @@
     
 }
 
-- (void)client:(PSClient *)theClient didReceiveMessage:(PSMessage *)aMessage {
-    [self.messages addObject:aMessage];
-    [_messageReceivedSubscriber sendNext:aMessage];
+- (void)client:(PSClient *)theClient didReceiveMessages:(NSArray *)messages {
+    [self.messages addObjectsFromArray:messages];
+    [_messageReceivedSubscriber sendNext:messages];
 }
 
 @end
