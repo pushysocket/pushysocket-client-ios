@@ -75,7 +75,7 @@ static BOOL PushySocketSecure = NO;
     if (!_connected) return NO;
     
     NSError *anError = nil;
-    BOOL success = [_socketIO emit:@"login" args:@{@"name":@"ios"} error:&anError];
+    BOOL success = [_socketIO emit:@"login" args:@{@"name":name} error:&anError];
     if (anError) NSLog(@"anError: %@", anError);
     
     self.loggedIn = success;
@@ -85,7 +85,7 @@ static BOOL PushySocketSecure = NO;
 
 - (BOOL)sendMessage:(NSString *)message {
     NSError *anError = nil;
-    BOOL success = [_socketIO emit:@"message" args:@[@{@"message":message}] error:&anError];
+    BOOL success = [_socketIO emit:@"message" args:@{@"message":message} error:&anError];
     if (anError) NSLog(@"anError: %@", anError);
     
     return success;

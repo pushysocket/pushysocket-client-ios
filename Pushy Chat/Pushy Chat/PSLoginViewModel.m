@@ -47,8 +47,10 @@
 - (RACCommand *)loginCommand {
     if (!_loginCommand) {
         NSString *userName = self.userName;
+        @weakify(self);
         _loginCommand = [[RACCommand alloc] initWithEnabled:self.nameValidSignal signalBlock:^RACSignal *(id input) {
-            return [self rac_loginWithName:userName];
+            @strongify(self);
+            return [self rac_loginWithName:self.userName];
         }];
     }
     return _loginCommand;

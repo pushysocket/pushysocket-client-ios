@@ -45,8 +45,10 @@
 - (RACCommand *)sendMessageCommand {
     if (!_sendMessageCommand) {
         NSString *messageToSend = self.messageToSend;
+        @weakify(self);
         _sendMessageCommand = [[RACCommand alloc] initWithEnabled:self.messageToSendValidSignal signalBlock:^RACSignal *(id input) {
-            return [self rac_sendMessage:messageToSend];
+            @strongify(self);
+            return [self rac_sendMessage:self.messageToSend];
         }];
     }
     return _sendMessageCommand;
