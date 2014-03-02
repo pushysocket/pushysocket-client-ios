@@ -58,6 +58,7 @@
     RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         if ([_client sendMessage:theMessage]) {
             [subscriber sendCompleted];
+            self.messageToSend = nil;
         }
         else {
             [subscriber sendError:nil];
