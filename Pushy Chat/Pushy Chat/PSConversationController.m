@@ -88,6 +88,8 @@
     [[self.conversationViewModel.sendMessageCommand.executionSignals flattenMap:^RACStream *(RACSignal *subscribedSignal) {
         return [[subscribedSignal ignoreValues] concat:[RACSignal return:RACUnit.defaultUnit]];
     }] subscribeNext:^(id x) {
+        self.messageCreateView.messageToSendLabel.text = nil;
+        [self.messageCreateView.messageToSendLabel resignFirstResponder];
         NSLog(@"Done");
     }];
     

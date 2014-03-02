@@ -85,7 +85,7 @@ static BOOL PushySocketSecure = NO;
 
 - (BOOL)sendMessage:(NSString *)message {
     NSError *anError = nil;
-    BOOL success = [_socketIO emit:@"message" args:@{@"message":message} error:&anError];
+    BOOL success = [_socketIO emit:@"message" args:@[@{@"message":message}] error:&anError];
     if (anError) NSLog(@"anError: %@", anError);
     
     return success;
