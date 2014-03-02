@@ -93,7 +93,7 @@
     
 }
 
-- (void)client:(PSClient *)theClient didReceiveMessage:(PSMessage *)aMessage {
+- (void)client:(PSClient *)theClient didReceiveMessages:(NSArray *)messages {
 }
 
 @end
