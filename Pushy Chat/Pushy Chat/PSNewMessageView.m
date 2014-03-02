@@ -8,6 +8,8 @@
 
 #import "PSNewMessageView.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 @interface PSNewMessageView ()
 
 @end
@@ -22,8 +24,15 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        
+        
     }
     return self;
+}
+
+- (void)awakeFromNib {
+    self.layer.borderColor = [[UIColor redColor] CGColor];
+    self.layer.borderWidth = 1.f;
 }
 
 /*
