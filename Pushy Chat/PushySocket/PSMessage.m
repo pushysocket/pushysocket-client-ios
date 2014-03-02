@@ -49,6 +49,12 @@
     chatMessage.message = data[@"message"];
     chatMessage.name = data[@"user"][@"name"];
     
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    NSDate *date = [dateFormatter dateFromString:data[@"timestamp"]];
+    if (date) chatMessage.timestamp = date;
+    
     return chatMessage;
 }
 

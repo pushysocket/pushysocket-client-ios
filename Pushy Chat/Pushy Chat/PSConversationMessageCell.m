@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timestampLabel;
+@property (strong, nonatomic) NSDateFormatter *dateFormatter;
 
 @end
 
@@ -30,8 +31,16 @@
 }
 
 - (void)awakeFromNib {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    [dateFormatter setDoesRelativeDateFormatting:YES];
+    
     RAC(self.messageLabel, text) = RACObserve(self, chatMessage.message);
     RAC(self.nameLabel, text) = RACObserve(self, chatMessage.name);
+    RAC(self.timestampLabel, text) = [RACObserve(self, chatMessage.timestamp) map:^id(NSDate * timestamp) {
+        return [dateFormatter stringFromDate:timestamp];
+    }];
 }
 
 @end
