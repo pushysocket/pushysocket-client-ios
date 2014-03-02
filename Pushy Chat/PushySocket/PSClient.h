@@ -17,13 +17,14 @@
 - (void)clientDidDisconnectToServer:(PSClient *)theClient;
 
 - (void)client:(PSClient *)theClient didReceiveMessage:(PSMessage *)aMessage;
+- (void)client:(PSClient *)theClient didSendMessage:(PSMessage *)aMessage;
 
 @end
 
 @interface PSClient : NSObject
 
 @property (nonatomic, copy, readonly) NSString *host;
-@property (nonatomic, copy, readonly) NSString *port;
+@property (nonatomic, copy, readonly) NSNumber *port;
 @property (nonatomic, assign, getter = isConnected, readonly) BOOL connected;
 @property (nonatomic, assign, getter = isLoggedIn, readonly) BOOL loggedIn;
 
