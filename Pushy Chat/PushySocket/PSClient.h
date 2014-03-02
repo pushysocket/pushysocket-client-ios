@@ -23,14 +23,20 @@
 
 @interface PSClient : NSObject
 
-@property (nonatomic, copy, readonly) NSString *host;
-@property (nonatomic, copy, readonly) NSNumber *port;
-@property (nonatomic, assign, getter = isConnected, readonly) BOOL connected;
-@property (nonatomic, assign, getter = isLoggedIn, readonly) BOOL loggedIn;
+@property (nonatomic, copy) NSString *host;
+@property (nonatomic, assign) NSInteger port;
+
+@property (nonatomic, assign, getter = isConnected) BOOL connected;
+@property (nonatomic, assign, getter = isLoggedIn) BOOL loggedIn;
+@property (nonatomic, assign, getter = isSecure) BOOL secure;
+
+@property (nonatomic, copy) NSString *clientId;
 
 @property (nonatomic, weak) id<PSClientDelegate> delegate;
 
 - (BOOL)sendMessage:(NSString *)message;
 - (BOOL)loginWithName:(NSString *)name;
+
+- (void)refreshMessages;
 
 @end

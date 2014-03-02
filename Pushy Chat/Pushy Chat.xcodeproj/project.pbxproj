@@ -33,6 +33,8 @@
 		870BC30D18C2F3B500BC9F6D /* PSNewMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 870BC30C18C2F3B500BC9F6D /* PSNewMessageView.xib */; };
 		870BC31018C2F43C00BC9F6D /* PSNewMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 870BC30F18C2F43C00BC9F6D /* PSNewMessageView.m */; };
 		870BC31318C3280C00BC9F6D /* PSConversationNotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 870BC31218C3280C00BC9F6D /* PSConversationNotificationCell.m */; };
+		870BC31618C34BCF00BC9F6D /* PSClientSocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 870BC31518C34BCF00BC9F6D /* PSClientSocketIO.m */; };
+		870BC31918C34C6C00BC9F6D /* PSClientAZSocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 870BC31818C34C6C00BC9F6D /* PSClientAZSocketIO.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,10 @@
 		870BC30F18C2F43C00BC9F6D /* PSNewMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSNewMessageView.m; sourceTree = "<group>"; };
 		870BC31118C3280C00BC9F6D /* PSConversationNotificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSConversationNotificationCell.h; sourceTree = "<group>"; };
 		870BC31218C3280C00BC9F6D /* PSConversationNotificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSConversationNotificationCell.m; sourceTree = "<group>"; };
+		870BC31418C34BCF00BC9F6D /* PSClientSocketIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSClientSocketIO.h; path = PushySocket/PSClientSocketIO.h; sourceTree = "<group>"; };
+		870BC31518C34BCF00BC9F6D /* PSClientSocketIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSClientSocketIO.m; path = PushySocket/PSClientSocketIO.m; sourceTree = "<group>"; };
+		870BC31718C34C6C00BC9F6D /* PSClientAZSocketIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSClientAZSocketIO.h; path = PushySocket/PSClientAZSocketIO.h; sourceTree = "<group>"; };
+		870BC31818C34C6C00BC9F6D /* PSClientAZSocketIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSClientAZSocketIO.m; path = PushySocket/PSClientAZSocketIO.m; sourceTree = "<group>"; };
 		9F900D516E0D42C4B91AF43F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		C0DA22EC391F4FC094B1AD2A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -228,6 +234,10 @@
 				870BC28F18C1AA8800BC9F6D /* PSMessage.m */,
 				870BC29318C1BDD500BC9F6D /* PSClient.h */,
 				870BC29418C1BDD500BC9F6D /* PSClient.m */,
+				870BC31418C34BCF00BC9F6D /* PSClientSocketIO.h */,
+				870BC31518C34BCF00BC9F6D /* PSClientSocketIO.m */,
+				870BC31718C34C6C00BC9F6D /* PSClientAZSocketIO.h */,
+				870BC31818C34C6C00BC9F6D /* PSClientAZSocketIO.m */,
 			);
 			name = PushySocket;
 			sourceTree = "<group>";
@@ -380,6 +390,7 @@
 				870BC25818C1A1DA00BC9F6D /* main.m in Sources */,
 				870BC30818C2D3ED00BC9F6D /* PSLoginViewModel.m in Sources */,
 				870BC31318C3280C00BC9F6D /* PSConversationNotificationCell.m in Sources */,
+				870BC31918C34C6C00BC9F6D /* PSClientAZSocketIO.m in Sources */,
 				870BC31018C2F43C00BC9F6D /* PSNewMessageView.m in Sources */,
 				870BC30B18C2EB2300BC9F6D /* PSConversationViewLayout.m in Sources */,
 				870BC28A18C1A97100BC9F6D /* PSConversationViewModel.m in Sources */,
@@ -389,6 +400,7 @@
 				870BC29018C1AA8800BC9F6D /* PSMessage.m in Sources */,
 				870BC28618C1A4E700BC9F6D /* PSConversationController.m in Sources */,
 				870BC28D18C1A9AB00BC9F6D /* PSConversationMessageCell.m in Sources */,
+				870BC31618C34BCF00BC9F6D /* PSClientSocketIO.m in Sources */,
 				870BC29518C1BDD500BC9F6D /* PSClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

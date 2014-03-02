@@ -1,6 +1,6 @@
 platform :ios, '7.0'
 
-#pod 'AZSocketIO'
+pod 'AZSocketIO'
 pod 'socket.IO'
 
 pod 'ReactiveCocoa'

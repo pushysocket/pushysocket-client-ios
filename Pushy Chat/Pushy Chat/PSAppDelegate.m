@@ -8,7 +8,8 @@
 
 #import "PSAppDelegate.h"
 
-#import "PSClient.h"
+#import "PSClientAZSocketIO.h"
+#import "PSClientSocketIO.h"
 
 @implementation PSAppDelegate
 
@@ -17,7 +18,8 @@
     // Override point for customization after application launch.
     [application setStatusBarStyle:UIStatusBarStyleLightContent];
     
-    self.pushySocketClient = [[PSClient alloc] init];
+    //self.pushySocketClient = [[PSClientAZSocketIO alloc] init];
+    self.pushySocketClient = [[PSClientSocketIO alloc] init];
     
     return YES;
 }

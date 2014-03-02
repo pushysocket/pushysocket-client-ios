@@ -8,6 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+//NS_ENUM(NSUInteger, PSMessageType)
+
+typedef NS_ENUM(NSInteger, PSMessageType) {
+    PSMessageTypeBasic
+};
+
+@protocol PSMessageProtocol <NSObject>
+
+@end
+
 @interface PSMessage : NSObject
 
 @property (nonatomic, copy) NSString *message;

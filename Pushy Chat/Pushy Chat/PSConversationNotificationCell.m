@@ -8,6 +8,10 @@
 
 #import "PSConversationNotificationCell.h"
 
+@interface PSConversationNotificationCell ()
+
+@end
+
 @implementation PSConversationNotificationCell
 
 - (id)initWithFrame:(CGRect)frame
