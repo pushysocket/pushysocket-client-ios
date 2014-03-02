@@ -27,6 +27,7 @@
 		870BC28D18C1A9AB00BC9F6D /* PSConversationMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 870BC28C18C1A9AB00BC9F6D /* PSConversationMessageCell.m */; };
 		870BC29018C1AA8800BC9F6D /* PSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 870BC28F18C1AA8800BC9F6D /* PSMessage.m */; };
 		870BC29518C1BDD500BC9F6D /* PSClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 870BC29418C1BDD500BC9F6D /* PSClient.m */; };
+		870BC2BD18C28DE100BC9F6D /* PSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 870BC2BC18C28DE100BC9F6D /* PSLoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,8 @@
 		870BC28F18C1AA8800BC9F6D /* PSMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSMessage.m; path = PushySocket/PSMessage.m; sourceTree = "<group>"; };
 		870BC29318C1BDD500BC9F6D /* PSClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSClient.h; path = PushySocket/PSClient.h; sourceTree = "<group>"; };
 		870BC29418C1BDD500BC9F6D /* PSClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSClient.m; path = PushySocket/PSClient.m; sourceTree = "<group>"; };
+		870BC2BB18C28DE100BC9F6D /* PSLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSLoginViewController.h; sourceTree = "<group>"; };
+		870BC2BC18C28DE100BC9F6D /* PSLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSLoginViewController.m; sourceTree = "<group>"; };
 		9F900D516E0D42C4B91AF43F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		C0DA22EC391F4FC094B1AD2A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -141,6 +144,7 @@
 				870BC25218C1A1DA00BC9F6D /* Supporting Files */,
 				870BC28318C1A4BC00BC9F6D /* Friends List */,
 				870BC28718C1A4EB00BC9F6D /* Conversation View */,
+				870BC2BE18C28DE600BC9F6D /* Login View Controller */,
 			);
 			path = "Pushy Chat";
 			sourceTree = "<group>";
@@ -205,6 +209,15 @@
 				870BC29418C1BDD500BC9F6D /* PSClient.m */,
 			);
 			name = PushySocket;
+			sourceTree = "<group>";
+		};
+		870BC2BE18C28DE600BC9F6D /* Login View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				870BC2BB18C28DE100BC9F6D /* PSLoginViewController.h */,
+				870BC2BC18C28DE100BC9F6D /* PSLoginViewController.m */,
+			);
+			name = "Login View Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,6 +356,7 @@
 				870BC25818C1A1DA00BC9F6D /* main.m in Sources */,
 				870BC28A18C1A97100BC9F6D /* PSConversationViewModel.m in Sources */,
 				870BC25C18C1A1DA00BC9F6D /* PSAppDelegate.m in Sources */,
+				870BC2BD18C28DE100BC9F6D /* PSLoginViewController.m in Sources */,
 				870BC28218C1A4B700BC9F6D /* PSFriendsListController.m in Sources */,
 				870BC29018C1AA8800BC9F6D /* PSMessage.m in Sources */,
 				870BC28618C1A4E700BC9F6D /* PSConversationController.m in Sources */,

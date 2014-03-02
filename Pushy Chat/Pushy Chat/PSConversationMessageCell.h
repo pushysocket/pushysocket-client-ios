@@ -12,6 +12,6 @@
 
 @interface PSConversationMessageCell : UICollectionViewCell
 
-@property (nonatomic, strong) PSMessage *message;
+@property (nonatomic, weak) PSMessage *message;
 
 @end

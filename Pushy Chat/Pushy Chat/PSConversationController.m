@@ -34,11 +34,12 @@
     [super viewDidLoad];
     
     [self.conversationViewModel.rac_signalForMessageReceived subscribeNext:^(PSMessage *message) {
-        NSInteger section = 0;
-        NSInteger lastRow = [self.collectionView numberOfItemsInSection:section];
-        NSIndexPath *nextIndexPath = [NSIndexPath indexPathForRow:lastRow inSection:section];
-        
-        [self.collectionView insertItemsAtIndexPaths:@[nextIndexPath]];
+        [self.collectionView reloadData];
+//        NSInteger section = 0;
+//        NSInteger lastRow = [self.collectionView numberOfItemsInSection:section];
+//        NSIndexPath *nextIndexPath = [NSIndexPath indexPathForRow:lastRow inSection:section];
+//        
+//        [self.collectionView insertItemsAtIndexPaths:@[nextIndexPath]];
     }];
 }
 

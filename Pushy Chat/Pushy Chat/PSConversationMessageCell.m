@@ -12,7 +12,9 @@
 
 @interface PSConversationMessageCell ()
 
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timestampLabel;
 
 @end
 
@@ -29,7 +31,7 @@
 
 - (void)awakeFromNib {
     RAC(self.messageLabel, text) = RACObserve(self, message.message);
+    RAC(self.nameLabel, text) = RACObserve(self, message.name);
 }
-
 
 @end
