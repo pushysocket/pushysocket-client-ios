@@ -19,7 +19,7 @@
     [application setStatusBarStyle:UIStatusBarStyleLightContent];
     
     self.pushySocketClient = [[PSClientAZSocketIO alloc] init];
-    //self.pushySocketClient = [[PSClientSocketIO alloc] init];
+//    self.pushySocketClient = [[PSClientSocketIO alloc] init];
     
     return YES;
 }

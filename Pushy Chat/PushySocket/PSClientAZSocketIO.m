@@ -24,7 +24,8 @@
     self = [super init];
     if (!self) return nil;
     
-    _socketIO = [[AZSocketIO alloc] initWithHost:self.host andPort:[NSString stringWithFormat:@"%ld",(long)self.port] secure:self.secure];
+//    _socketIO = [[AZSocketIO alloc] initWithHost:self.host andPort:[NSString stringWithFormat:@"%ld",(long)self.port] secure:self.secure];
+    _socketIO = [[AZSocketIO alloc] initWithHost:self.host andPort:[NSString stringWithFormat:@"%ld",(long)self.port] secure:self.secure withNamespace:@"/chat"];
     
     @weakify(self)
     [_socketIO setEventRecievedBlock:^(NSString *eventName, id data) {

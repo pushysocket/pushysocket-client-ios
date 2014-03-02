@@ -27,8 +27,8 @@
     
     _socketIO = [[SocketIO alloc] initWithDelegate:self];
     
-    //[_socketIO connectToHost:PushySocketHost onPort:PushySocketPort withParams:nil withNamespace:@"/chat"];
-    [_socketIO connectToHost:self.host onPort:self.port];
+    [_socketIO connectToHost:self.host onPort:self.port withParams:nil withNamespace:@"/chat"];
+    //[_socketIO connectToHost:self.host onPort:self.port];
     
     return self;
 }

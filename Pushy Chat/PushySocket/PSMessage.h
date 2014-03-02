@@ -11,10 +11,14 @@
 //NS_ENUM(NSUInteger, PSMessageType)
 
 typedef NS_ENUM(NSInteger, PSMessageType) {
-    PSMessageTypeBasic
+    PSMessageTypeBasic,
+    PSMessageTypeJoinNotification,
+    PSMessageTypeLeftNotification,
 };
 
 @protocol PSMessageProtocol <NSObject>
+
+@property (nonatomic, copy) NSString *message;
 
 @end
 
