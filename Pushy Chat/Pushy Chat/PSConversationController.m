@@ -18,8 +18,9 @@
 
 static const CGFloat PushySocketNewMessageViewHeight = 51.f;
 
-@interface PSConversationController ()
+@interface PSConversationController () <UICollectionViewDelegateFlowLayout>
 
+@property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *collectionViewFlowLayoutDelegate;
 @property (nonatomic, assign) CGFloat keyboardHeight;
 @property (nonatomic, weak) PSNewMessageView *messageCreateView;
 
@@ -188,6 +189,23 @@ static const CGFloat PushySocketNewMessageViewHeight = 51.f;
         return cell;
     }
     
+}
+
+#pragma mark - UICollectionViewFlowLayoutDelegate
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    id<PSMessageProtocol> message = self.conversationViewModel.messages[indexPath.row];
+    CGSize cellSize;
+    
+    if ([message isKindOfClass:[PSChatMessage class]]) {
+        cellSize = CGSizeMake(CGRectGetWidth(self.collectionView.frame), 74.f);
+    }
+    else {
+        cellSize = CGSizeMake(CGRectGetWidth(self.collectionView.frame), 44.f);
+    }
+    
+    return cellSize;
 }
 
 @end
