@@ -34,12 +34,11 @@
     [super viewDidLoad];
     
     [self.conversationViewModel.rac_signalForMessageReceived subscribeNext:^(PSMessage *message) {
-        [self.collectionView reloadData];
-//        NSInteger section = 0;
-//        NSInteger lastRow = [self.collectionView numberOfItemsInSection:section];
-//        NSIndexPath *nextIndexPath = [NSIndexPath indexPathForRow:lastRow inSection:section];
-//        
-//        [self.collectionView insertItemsAtIndexPaths:@[nextIndexPath]];
+        NSInteger section = 0;
+        NSInteger lastRow = [self.collectionView numberOfItemsInSection:section];
+        NSIndexPath *nextIndexPath = [NSIndexPath indexPathForRow:lastRow inSection:section];
+        
+        [self.collectionView insertItemsAtIndexPaths:@[nextIndexPath]];
     }];
 }
 
@@ -61,7 +60,7 @@
     
     PSConversationMessageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"conversationCell" forIndexPath:indexPath];
    
-    [cell setMessage:self.conversationViewModel.messages[indexPath.row]];
+    [cell setChatMessage:self.conversationViewModel.messages[indexPath.row]];
     
     return cell;
 }

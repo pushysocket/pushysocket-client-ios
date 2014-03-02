@@ -30,8 +30,8 @@
 }
 
 - (void)awakeFromNib {
-    RAC(self.messageLabel, text) = RACObserve(self, message.message);
-    RAC(self.nameLabel, text) = RACObserve(self, message.name);
+    RAC(self.messageLabel, text) = RACObserve(self, chatMessage.message);
+    RAC(self.nameLabel, text) = RACObserve(self, chatMessage.name);
 }
 
 @end

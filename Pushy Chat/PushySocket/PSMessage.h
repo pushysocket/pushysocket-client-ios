@@ -10,7 +10,7 @@
 
 @interface PSMessage : NSObject
 
-@property (nonatomic, assign) NSString *message;
-@property (nonatomic, assign) NSString *name;
+@property (nonatomic, copy) NSString *message;
+@property (nonatomic, copy) NSString *name;
 
 @end

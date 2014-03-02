@@ -25,13 +25,6 @@
     
     _messages = [NSMutableArray array];
     
-//    for (int c = 0; c < 30; c++) {
-//        PSMessage *message = [[PSMessage alloc] init];
-//        message.message = @"FooBar";
-//        
-//        [_messages addObject:message];
-//    }
-    
     return self;
 }
 
@@ -61,7 +54,7 @@
 
 - (void)client:(PSClient *)theClient didReceiveMessage:(PSMessage *)aMessage {
     [self.messages addObject:aMessage];
-    [_messageReceivedSubscriber sendNext:nil];
+    [_messageReceivedSubscriber sendNext:aMessage];
 }
 
 @end

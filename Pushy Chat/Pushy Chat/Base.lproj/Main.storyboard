@@ -151,9 +151,9 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <size key="customSize" width="320" height="94"/>
                                 <connections>
-                                    <outlet property="messageLabel" destination="Fa6-qS-MiF" id="c2M-aI-kL8"/>
-                                    <outlet property="nameLabel" destination="MYt-tE-BO1" id="luE-vT-vNP"/>
-                                    <outlet property="timestampLabel" destination="RwW-at-Red" id="fD9-PT-0Ie"/>
+                                    <outlet property="messageLabel" destination="Fa6-qS-MiF" id="nro-DI-Iz8"/>
+                                    <outlet property="nameLabel" destination="MYt-tE-BO1" id="r9T-fh-l6k"/>
+                                    <outlet property="timestampLabel" destination="RwW-at-Red" id="ell-4H-fxN"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
