@@ -1,42 +1,14 @@
 {
   "images" : [
     {
-      "resizing" : {
-        "mode" : "9-part",
-        "center" : {
-          "mode" : "fill",
-          "width" : 1,
-          "height" : 1
-        },
-        "capInsets" : {
-          "bottom" : 11,
-          "top" : 9,
-          "right" : 10,
-          "left" : 10
-        }
-      },
       "idiom" : "universal",
-      "filename" : "button-green-1.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "button-green-1.png"
     },
     {
-      "resizing" : {
-        "mode" : "9-part",
-        "center" : {
-          "mode" : "fill",
-          "width" : 1,
-          "height" : 1
-        },
-        "capInsets" : {
-          "bottom" : 11,
-          "top" : 9,
-          "right" : 10,
-          "left" : 10
-        }
-      },
       "idiom" : "universal",
-      "filename" : "button-green.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "button-green.png"
     }
   ],
   "info" : {
