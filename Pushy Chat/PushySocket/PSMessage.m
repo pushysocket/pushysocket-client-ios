@@ -61,8 +61,8 @@
 @implementation PSJoinedMessage
 + (id<PSMessageProtocol>)messageWithEvent:(NSString *)event andData:(id)data {
     PSJoinedMessage *joinMessage = [[PSJoinedMessage alloc] init];
-    joinMessage.message = data[@"message"];
     joinMessage.name = data[@"user"][@"name"];
+    joinMessage.message = [NSString stringWithFormat:@"%@ joined the conversation", joinMessage.name];
     
     return joinMessage;
 }
@@ -76,8 +76,8 @@
 
 + (id<PSMessageProtocol>)messageWithEvent:(NSString *)event andData:(id)data {
     PSLeftMessage *leftMessage = [[PSLeftMessage alloc] init];
-    leftMessage.message = data[@"message"];
-    leftMessage.name = data[@"user"][@"name"];
+    leftMessage.message = data[@"name"];
+    leftMessage.message = [NSString stringWithFormat:@"%@ left the conversation", leftMessage.name];
     
     return leftMessage;
 }

@@ -199,13 +199,15 @@ static const CGFloat PushySocketNewMessageViewHeight = 51.f;
     CGSize cellSize;
     
     if ([message isKindOfClass:[PSChatMessage class]]) {
-        cellSize = CGSizeMake(CGRectGetWidth(self.collectionView.frame), 74.f);
+        cellSize = CGSizeMake(CGRectGetWidth(self.collectionView.frame), 94.f);
     }
     else {
-        cellSize = CGSizeMake(CGRectGetWidth(self.collectionView.frame), 44.f);
+        cellSize = CGSizeMake(CGRectGetWidth(self.collectionView.frame), 39.f);
     }
     
     return cellSize;
 }
+
+
 
 @end
