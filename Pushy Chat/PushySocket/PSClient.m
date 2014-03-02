@@ -46,7 +46,7 @@ static BOOL PushySocketSecure = NO;
         if ([eventName isEqualToString:@"message"]) {
             @strongify(self)
             NSString *messageBody = data[0][@"message"];
-            NSString *user = data[0][@"user"];
+            NSString *user = data[0][@"user"][@"name"];
             PSMessage *message = [[PSMessage alloc] init];
             message.message = messageBody;
             message.name = user;
