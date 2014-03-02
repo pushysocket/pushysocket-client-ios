@@ -58,7 +58,10 @@
 
 - (RACSignal *)rac_loginWithName:(NSString *)name {
     RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        if ([_client loginWithName:self.userName]) {
+        if ([_client isLoggedIn]) {
+            [subscriber sendCompleted];
+        }
+        else if ([_client isConnected] && [_client loginWithName:self.userName]) {
             [subscriber sendCompleted];
         }
         else {
