@@ -17,6 +17,8 @@
 
 @interface PSConversationController ()
 
+@property (nonatomic, assign) CGFloat keyboardHeight;
+@property (nonatomic, weak) PSNewMessageView *messageCreateView;
 
 @end
 
@@ -27,12 +29,41 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        
+        [self registerNotifications];
     }
     return self;
 }
 
+- (void)awakeFromNib {
+    [self registerNotifications];
+}
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)registerNotifications {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardChangedNotification:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardChangedNotification:)
+                                                 name:UIKeyboardDidHideNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardChangedNotification:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardChangedNotification:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+}
 
 - (void)viewDidLoad
 {
@@ -45,6 +76,11 @@
         
         [self.collectionView insertItemsAtIndexPaths:@[nextIndexPath]];
     }];
+    
+    PSNewMessageView *messageView = [[[NSBundle mainBundle] loadNibNamed:@"PSNewMessageView" owner:self options:nil] objectAtIndex:0];
+    self.messageCreateView = messageView;
+    [self updateMessageFrame];
+    [self.view addSubview:messageView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,6 +89,55 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)updateMessageFrame {
+    CGFloat textFieldHeight = 75.f;
+    CGFloat x = 0.f;
+    CGFloat adjustedY = CGRectGetHeight(self.view.bounds) - _keyboardHeight - textFieldHeight;
+    
+    CGRect messageFrame = CGRectMake(x, adjustedY, CGRectGetWidth(self.collectionView.bounds), textFieldHeight);
+    [self.messageCreateView setFrame:messageFrame];
+}
+
+
+- (void)keyboardChangedNotification:(NSNotification*)notification {
+    
+    CGFloat keyboardHeight;
+    double animationDuration;
+    
+    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+    
+    if(notification) {
+        NSDictionary* keyboardInfo = [notification userInfo];
+        CGRect keyboardFrame = [[keyboardInfo valueForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+        animationDuration = [[keyboardInfo valueForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+        
+        if(notification.name == UIKeyboardWillShowNotification || notification.name == UIKeyboardDidShowNotification) {
+            if(UIInterfaceOrientationIsPortrait(orientation))
+                keyboardHeight = keyboardFrame.size.height;
+            else
+                keyboardHeight = keyboardFrame.size.width;
+        } else
+            keyboardHeight = 0;
+    } else {
+        keyboardHeight = self.keyboardHeight;
+    }
+    
+    _keyboardHeight = keyboardHeight;
+    
+
+    if(notification) {
+        [UIView animateWithDuration:animationDuration
+                              delay:0
+                            options:UIViewAnimationOptionAllowUserInteraction
+                         animations:^{
+                             [self updateMessageFrame];
+                         } completion:NULL];
+    }
+    else {
+        [self updateMessageFrame];
+    }
+    
+}
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
@@ -69,6 +154,11 @@
     [cell setChatMessage:self.conversationViewModel.messages[indexPath.row]];
     
     return cell;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"test");
+    return nil;
 }
 
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PSNewMessageView : UICollectionReusableView
+@interface PSNewMessageView : UIView
 
 + (NSString *)reuseIdentifier;
 + (NSString *)viewKind;

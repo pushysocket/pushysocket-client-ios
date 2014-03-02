@@ -25,8 +25,8 @@
     if (!self) return nil;
     
     _keyboardHeight = 0.f;
-    [self registerNib:[UINib nibWithNibName:@"PSNewMessageView" bundle:nil] forDecorationViewOfKind:[PSNewMessageView viewKind]];
-    [self registerNotifications];
+//    [self registerNib:[UINib nibWithNibName:@"PSNewMessageView" bundle:nil] forDecorationViewOfKind:[PSNewMessageView viewKind]];
+//    [self registerNotifications];
     
     return self;
 }
@@ -67,32 +67,32 @@
     self.minimumLineSpacing = 1.f;
 }
 
-- (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
-    NSArray *attributes = [super layoutAttributesForElementsInRect:rect];
-    
-    return [attributes arrayByAddingObject:[self layoutAttributesForDecorationViewOfKind:[PSNewMessageView viewKind] atIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] ]];
-}
+//- (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
+//    NSArray *attributes = [super layoutAttributesForElementsInRect:rect];
+//    
+//    return [attributes arrayByAddingObject:[self layoutAttributesForDecorationViewOfKind:[PSNewMessageView viewKind] atIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] ]];
+//}
+//
+//- (UICollectionViewLayoutAttributes *)layoutAttributesForDecorationViewOfKind:(NSString *)decorationViewKind atIndexPath:(NSIndexPath *)indexPath {
+//    UICollectionViewLayoutAttributes *decorationAttributes = nil;
+//    if ([decorationViewKind isEqualToString:[PSNewMessageView viewKind]]) {
+//        if (indexPath.row == 0 && indexPath.section == 0) {
+//            decorationAttributes = [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:decorationViewKind withIndexPath:indexPath];
+//            
+//            CGFloat textFieldHeight = 75.f;
+//            CGFloat x = 0.f;
+//            CGFloat adjustedY = self.collectionView.contentOffset.y + CGRectGetHeight(self.collectionView.bounds) - _keyboardHeight - textFieldHeight;
+//            
+//            
+//            decorationAttributes.frame = CGRectMake(x, adjustedY, CGRectGetWidth(self.collectionView.bounds), textFieldHeight);
+//            decorationAttributes.zIndex = 100;
+//        }
+//    }
+//    
+//    return decorationAttributes;
+//}
 
-- (UICollectionViewLayoutAttributes *)layoutAttributesForDecorationViewOfKind:(NSString *)decorationViewKind atIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewLayoutAttributes *decorationAttributes = nil;
-    if ([decorationViewKind isEqualToString:[PSNewMessageView viewKind]]) {
-        if (indexPath.row == 0 && indexPath.section == 0) {
-            decorationAttributes = [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:decorationViewKind withIndexPath:indexPath];
-            
-            CGFloat textFieldHeight = 75.f;
-            CGFloat x = 0.f;
-            CGFloat adjustedY = self.collectionView.contentOffset.y + CGRectGetHeight(self.collectionView.bounds) - _keyboardHeight - textFieldHeight;
-            
-            
-            decorationAttributes.frame = CGRectMake(x, adjustedY, CGRectGetWidth(self.collectionView.bounds), textFieldHeight);
-            decorationAttributes.zIndex = 100;
-        }
-    }
-    
-    return decorationAttributes;
-}
-
-- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds { return YES; }
+//- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds { return YES; }
 
 - (void)keyboardChangedNotification:(NSNotification*)notification {
     
@@ -119,24 +119,22 @@
     
     _keyboardHeight = keyboardHeight;
     
-    //PSNewMessageView *newMessageView = [self.collectionView.delegate col]
-    
-    CGRect newMessageViewRect = CGRectOffset(_messageEditView.frame, 0.f, (_keyboardHeight * -1));
     
     [self invalidateLayout];
-    
-    if(notification) {
-        [UIView animateWithDuration:animationDuration
-                              delay:0
-                            options:UIViewAnimationOptionAllowUserInteraction
-                         animations:^{
-                             [_messageEditView setFrame:newMessageViewRect];
-                         } completion:NULL];
-    }
-    else {
-        [_messageEditView setFrame:newMessageViewRect];
+//  PSNewMessageView *newMessageView = [self.collectionView.delegate col]
+//
+//    if(notification) {
+//        [UIView animateWithDuration:animationDuration
+//                              delay:0
+//                            options:UIViewAnimationOptionAllowUserInteraction
+//                         animations:^{
+//                             [_messageEditView setFrame:newMessageViewRect];
+//                         } completion:NULL];
+//    }
+//    else {
+//        [_messageEditView setFrame:newMessageViewRect];
 //        [self moveToPoint:newCenter rotateAngle:rotateAngle];
-    }
+//    }
     
 }
 
