@@ -4,6 +4,7 @@ PODS:
     - AFNetworking (~> 1.x)
     - SocketRocket (~> 0.x)
   - CRNavigationController (0.0.1)
+  - NSDate+RelativeTime (1.0.1)
   - ReactiveCocoa (2.2.4):
     - ReactiveCocoa/Core
     - ReactiveCocoa/no-arc
@@ -17,6 +18,7 @@ PODS:
 DEPENDENCIES:
   - AZSocketIO
   - CRNavigationController
+  - NSDate+RelativeTime
   - ReactiveCocoa
   - socket.IO
 
@@ -24,6 +26,7 @@ SPEC CHECKSUMS:
   AFNetworking: 61fdd49e2ffe6380378df37b3b6e70630bb9dd66
   AZSocketIO: 4b63487082324400f39b1dd47ae79fd155c8304a
   CRNavigationController: a28d3a46893da80b3072fa7775b9fee1fb0e2c03
+  NSDate+RelativeTime: 802d337ebf0b5c0b1a8e63c035acf8942bb11ba3
   ReactiveCocoa: 953a45dda30674fe704d1d9c77cc874141742f47
   socket.IO: e0f5dc9a4dda5e41653f2032ac48217e1563176e
   SocketRocket: 7ac946bcce46287a791dfff3c1f8daa692821dae

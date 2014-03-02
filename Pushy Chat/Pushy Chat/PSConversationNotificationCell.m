@@ -8,9 +8,12 @@
 
 #import "PSConversationNotificationCell.h"
 
+#import <NSDate+RelativeTime.h>
+
 @interface PSConversationNotificationCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
+@property (strong, nonatomic) NSDateFormatter *dateFormatter;
 
 @end
 
@@ -26,7 +29,11 @@
 }
 
 - (void)awakeFromNib {
-    RAC(self.messageLabel, text) = RACObserve(self, message.message);
+    RAC(self.messageLabel, text) = [RACSignal combineLatest:@[RACObserve(self, message.message),
+                                                              RACObserve(self, message.timestamp)]
+                                                     reduce:^(NSString *message, NSDate *timestamp) {
+                                                        return [NSString stringWithFormat:@"%@ %@",message, [timestamp relativeTime]];
+                                                     }] ;
 }
 
 /*

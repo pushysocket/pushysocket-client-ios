@@ -49,6 +49,12 @@
     chatMessage.message = data[@"message"];
     chatMessage.name = data[@"user"][@"name"];
     
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    NSDate *date = [dateFormatter dateFromString:data[@"timestamp"]];
+    if (date) chatMessage.timestamp = date;
+    
     return chatMessage;
 }
 
@@ -64,6 +70,12 @@
     joinMessage.name = data[@"user"][@"name"];
     joinMessage.message = [NSString stringWithFormat:@"%@ joined the conversation", joinMessage.name];
     
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    NSDate *date = [dateFormatter dateFromString:data[@"timestamp"]];
+    if (date) joinMessage.timestamp = date;
+    
     return joinMessage;
 }
 
@@ -78,6 +90,12 @@
     PSLeftMessage *leftMessage = [[PSLeftMessage alloc] init];
     leftMessage.message = data[@"name"];
     leftMessage.message = [NSString stringWithFormat:@"%@ left the conversation", leftMessage.name];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    NSDate *date = [dateFormatter dateFromString:data[@"timestamp"]];
+    if (date) leftMessage.timestamp = date;
     
     return leftMessage;
 }
