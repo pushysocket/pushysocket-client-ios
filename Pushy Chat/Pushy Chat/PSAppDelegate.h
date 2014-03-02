@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class PSClient;
+
 @interface PSAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) PSClient *pushySocketClient;
 
 @end

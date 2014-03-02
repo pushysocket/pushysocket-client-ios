@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@class PSClient;
+#import "PSClient.h"
 
-@interface PSConversationViewModel : NSObject
+@interface PSConversationViewModel : NSObject < PSClientDelegate >
 
 @property (nonatomic, strong) PSClient * client;
 

@@ -8,7 +8,6 @@
 
 #import "PSConversationViewModel.h"
 
-#import "PSClient.h"
 #import "PSMessage.h"
 
 @interface PSConversationViewModel () < PSClientDelegate >

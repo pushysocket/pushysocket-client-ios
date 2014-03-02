@@ -30,5 +30,6 @@
 @property (nonatomic, weak) id<PSClientDelegate> delegate;
 
 - (void)sendMessage:(NSString *)message;
+- (BOOL)loginWithName:(NSString *)name;
 
 @end

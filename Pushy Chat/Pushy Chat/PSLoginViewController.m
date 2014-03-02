@@ -8,12 +8,23 @@
 
 #import "PSLoginViewController.h"
 
+#import "PSAppDelegate.h"
 #import "PSClient.h"
 
-#import "PSConversationViewModel.h"
+#import "PSLoginViewModel.h"
+
+#import <RACUnit.h>
+
 #import "PSConversationController.h"
+#import "PSConversationViewModel.h"
 
 @interface PSLoginViewController ()
+
+@property (weak, nonatomic) IBOutlet UIButton *joinChatButton;
+@property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
+@property (weak, nonatomic) IBOutlet UILabel *statusField;
+
+@property (strong, nonatomic) PSLoginViewModel *loginViewModel;
 
 @end
 
@@ -31,7 +42,32 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    PSAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    self.loginViewModel = [[PSLoginViewModel alloc] init];
+    self.loginViewModel.client = appDelegate.pushySocketClient;
+    
+    
+    RAC(self.loginViewModel, userName) = self.userNameTextField.rac_textSignal;
+    self.joinChatButton.rac_command = self.loginViewModel.loginCommand;
+    RAC(self.statusField, text) = RACObserve(self.loginViewModel, statusMessage);
+    
+    [[[self.loginViewModel.loginCommand executionSignals] flattenMap:^RACStream *(RACSignal *execution) {
+        return [[execution ignoreValues] concat: [RACSignal return:RACUnit.defaultUnit]];
+    }] subscribeNext:^(id x) {
+        PSConversationViewModel *conversationViewModel = [[PSConversationViewModel alloc] init];
+        
+        PSClient *client = [[PSClient alloc] init];
+        
+        client.delegate = conversationViewModel;
+        conversationViewModel.client = client;
+        
+        PSConversationController *conversationController = [self.storyboard instantiateViewControllerWithIdentifier:@"PSConversationController"];
+        conversationController.conversationViewModel = conversationViewModel;
+        
+        [self.navigationController pushViewController:conversationController animated:YES];
+    }];
 }
 
 - (void)didReceiveMemoryWarning

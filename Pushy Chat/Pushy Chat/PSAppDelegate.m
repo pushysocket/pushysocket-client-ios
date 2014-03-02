@@ -8,12 +8,17 @@
 
 #import "PSAppDelegate.h"
 
+#import "PSClient.h"
+
 @implementation PSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     [application setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    self.pushySocketClient = [[PSClient alloc] init];
+    
     return YES;
 }
 							

@@ -62,8 +62,6 @@ static BOOL PushySocketSecure = NO;
     [_socketIO connectWithSuccess:^{
         @strongify(self);
         self.connected = YES;
-        
-        [self loginWithName:@"ios-client-adam"];
     } andFailure:^(NSError *error) {
         @strongify(self);
         self.connected = NO;

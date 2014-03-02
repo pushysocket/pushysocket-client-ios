@@ -38,9 +38,6 @@
                                 <state key="normal" title="Join Chat">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="qfu-CT-c2l" kind="push" id="bwS-ZQ-zEq"/>
-                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sO3-dS-Aqb">
                                 <rect key="frame" x="20" y="142" width="280" height="30"/>
@@ -48,10 +45,22 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wtt-4l-WfC">
+                                <rect key="frame" x="20" y="218" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="9jV-yp-Fm1"/>
+                    <connections>
+                        <outlet property="joinChatButton" destination="3iu-u1-qxS" id="Zcu-bg-RGO"/>
+                        <outlet property="statusField" destination="Wtt-4l-WfC" id="TS5-ns-lIN"/>
+                        <outlet property="userNameTextField" destination="sO3-dS-Aqb" id="yJf-uF-gdK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6O4-qU-faz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -105,7 +114,7 @@
         <!--Conversation Controller-->
         <scene sceneID="nc9-3o-5fs">
             <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="qfu-CT-c2l" customClass="PSConversationController" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="PSConversationController" autoresizesArchivedViewToFullSize="NO" id="qfu-CT-c2l" customClass="PSConversationController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="fUi-PR-Nfx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -118,7 +127,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="conversationCell" id="EJZ-6e-Ru9" customClass="PSConversationMessageCell">
-                                <rect key="frame" x="0.0" y="64" width="320" height="94"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
