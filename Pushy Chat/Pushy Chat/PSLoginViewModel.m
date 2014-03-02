@@ -75,7 +75,7 @@
 - (RACSignal *)nameValidSignal {
     if (!_nameValidSignal) {
         _nameValidSignal = [RACObserve(self, userName) map:^id(NSString *userName) {
-            return @(!!userName);
+            return @(userName && ![userName isEqualToString:@""]);
         }];
     }
     return _nameValidSignal;

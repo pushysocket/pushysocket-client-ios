@@ -12,6 +12,7 @@
 
 @interface PSConversationViewModel () < PSClientDelegate >
 
+@property (nonatomic, strong) RACSignal *messageToSendValidSignal;
 @property (nonatomic, weak) id<RACSubscriber> messageReceivedSubscriber;
 
 @end
@@ -39,6 +40,43 @@
     [signal setName:@"rac_signalForMessageReceived"];
     
     return signal;
+}
+
+- (RACCommand *)sendMessageCommand {
+    if (!_sendMessageCommand) {
+        NSString *messageToSend = self.messageToSend;
+        _sendMessageCommand = [[RACCommand alloc] initWithEnabled:self.messageToSendValidSignal signalBlock:^RACSignal *(id input) {
+            return [self rac_sendMessage:messageToSend];
+        }];
+    }
+    return _sendMessageCommand;
+}
+
+- (RACSignal *)rac_sendMessage:(NSString *)theMessage {
+    RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        if ([_client sendMessage:theMessage]) {
+            [subscriber sendCompleted];
+        }
+        else {
+            [subscriber sendError:nil];
+        }
+        return [RACDisposable disposableWithBlock:^{
+            // Do Nothing
+        }];
+    }];
+    
+    [signal setName:@"rac_signalForMessageSending"];
+    
+    return signal;
+}
+
+- (RACSignal *)messageToSendValidSignal {
+    if (!_messageToSendValidSignal) {
+        _messageToSendValidSignal = [RACObserve(self, messageToSend) map:^id(NSString *theMessage) {
+            return @(theMessage && ![theMessage isEqualToString:@""]);
+        }];
+    }
+    return _messageToSendValidSignal;
 }
 
 #pragma mark - PSClientDelegate
