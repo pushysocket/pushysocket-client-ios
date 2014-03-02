@@ -57,11 +57,8 @@
         return [[execution ignoreValues] concat: [RACSignal return:RACUnit.defaultUnit]];
     }] subscribeNext:^(id x) {
         PSConversationViewModel *conversationViewModel = [[PSConversationViewModel alloc] init];
-        
-        PSClient *client = [[PSClient alloc] init];
-        
-        client.delegate = conversationViewModel;
-        conversationViewModel.client = client;
+        self.loginViewModel.client.delegate = conversationViewModel;
+        conversationViewModel.client = self.loginViewModel.client;
         
         PSConversationController *conversationController = [self.storyboard instantiateViewControllerWithIdentifier:@"PSConversationController"];
         conversationController.conversationViewModel = conversationViewModel;

@@ -88,7 +88,7 @@
     [[self.conversationViewModel.sendMessageCommand.executionSignals flattenMap:^RACStream *(RACSignal *subscribedSignal) {
         return [[subscribedSignal ignoreValues] concat:[RACSignal return:RACUnit.defaultUnit]];
     }] subscribeNext:^(id x) {
-        //self.messageCreateView.messageToSendLabel.text = nil;
+        self.messageCreateView.messageToSendLabel.text = nil;
         [self.messageCreateView.messageToSendLabel resignFirstResponder];
         NSLog(@"Done");
     }];
@@ -103,7 +103,7 @@
 }
 
 - (void)updateMessageFrame {
-    CGFloat textFieldHeight = 75.f;
+    CGFloat textFieldHeight = 44.f;
     CGFloat x = 0.f;
     CGFloat adjustedY = CGRectGetHeight(self.view.bounds) - _keyboardHeight - textFieldHeight;
     
@@ -167,11 +167,6 @@
     [cell setChatMessage:self.conversationViewModel.messages[indexPath.row]];
     
     return cell;
-}
-
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"test");
-    return nil;
 }
 
 @end
