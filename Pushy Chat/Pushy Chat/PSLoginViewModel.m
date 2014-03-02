@@ -46,7 +46,7 @@
 
 - (RACCommand *)loginCommand {
     if (!_loginCommand) {
-        NSString *userName = self.userName;
+        //NSString *userName = self.userName;
         @weakify(self);
         _loginCommand = [[RACCommand alloc] initWithEnabled:self.nameValidSignal signalBlock:^RACSignal *(id input) {
             @strongify(self);
@@ -90,6 +90,10 @@
 }
 
 - (void)clientDidDisconnectToServer:(PSClient *)theClient {
+    
+}
+
+- (void)client:(PSClient *)theClient didSendMessage:(PSMessage *)aMessage {
     
 }
 

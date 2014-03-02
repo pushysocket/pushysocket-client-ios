@@ -44,7 +44,7 @@
 
 - (RACCommand *)sendMessageCommand {
     if (!_sendMessageCommand) {
-        NSString *messageToSend = self.messageToSend;
+        //NSString *messageToSend = self.messageToSend;
         @weakify(self);
         _sendMessageCommand = [[RACCommand alloc] initWithEnabled:self.messageToSendValidSignal signalBlock:^RACSignal *(id input) {
             @strongify(self);
@@ -88,6 +88,10 @@
 }
 
 - (void)clientDidDisconnectToServer:(PSClient *)theClient {
+    
+}
+
+- (void)client:(PSClient *)theClient didSendMessage:(PSMessage *)aMessage {
     
 }
 
