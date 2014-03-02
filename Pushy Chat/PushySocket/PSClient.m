@@ -43,16 +43,27 @@ static BOOL PushySocketSecure = NO;
     
     @weakify(self)
     [_socketIO setEventRecievedBlock:^(NSString *eventName, id data) {
-        PSMessage *message = [[PSMessage alloc] init];
-        message.message = eventName;
-        @strongify(self)
-        [self.delegate client:self didReceiveMessage:message];
+        if ([eventName isEqualToString:@"message"]) {
+            @strongify(self)
+            NSString *messageBody = data[0][@"message"];
+            NSString *user = data[0][@"user"];
+            PSMessage *message = [[PSMessage alloc] init];
+            message.message = messageBody;
+            message.name = user;
+            [self.delegate client:self didReceiveMessage:message];
+        }
+    }];
+    
+    [_socketIO setDisconnectedBlock:^{
+        NSLog(@"did Disconnect");
     }];
     
     
     [_socketIO connectWithSuccess:^{
         @strongify(self);
         self.connected = YES;
+        
+        [self loginWithName:@"ios-client-adam"];
     } andFailure:^(NSError *error) {
         @strongify(self);
         self.connected = NO;

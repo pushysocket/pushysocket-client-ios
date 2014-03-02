@@ -11,5 +11,6 @@
 @interface PSMessage : NSObject
 
 @property (nonatomic, assign) NSString *message;
+@property (nonatomic, assign) NSString *name;
 
 @end

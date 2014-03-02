@@ -25,6 +25,13 @@
     
     _messages = [NSMutableArray array];
     
+//    for (int c = 0; c < 30; c++) {
+//        PSMessage *message = [[PSMessage alloc] init];
+//        message.message = @"FooBar";
+//        
+//        [_messages addObject:message];
+//    }
+    
     return self;
 }
 
@@ -32,6 +39,7 @@
     RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         self.messageReceivedSubscriber = subscriber;
         return [RACDisposable disposableWithBlock:^{
+            self.messageReceivedSubscriber = nil;
             // Do Nothing
         }];
     }];
@@ -53,7 +61,7 @@
 
 - (void)client:(PSClient *)theClient didReceiveMessage:(PSMessage *)aMessage {
     [self.messages addObject:aMessage];
-    [_messageReceivedSubscriber sendNext:aMessage];
+    [_messageReceivedSubscriber sendNext:nil];
 }
 
 @end
