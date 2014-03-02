@@ -69,6 +69,11 @@
 {
     [super viewDidLoad];
     
+    PSNewMessageView *messageView = [[[NSBundle mainBundle] loadNibNamed:@"PSNewMessageView" owner:self options:nil] objectAtIndex:0];
+    self.messageCreateView = messageView;
+    [self updateMessageFrame];
+    [self.view addSubview:messageView];
+    
     [self.conversationViewModel.rac_signalForMessageReceived subscribeNext:^(PSMessage *message) {
         NSInteger section = 0;
         NSInteger lastRow = [self.collectionView numberOfItemsInSection:section];
@@ -77,10 +82,16 @@
         [self.collectionView insertItemsAtIndexPaths:@[nextIndexPath]];
     }];
     
-    PSNewMessageView *messageView = [[[NSBundle mainBundle] loadNibNamed:@"PSNewMessageView" owner:self options:nil] objectAtIndex:0];
-    self.messageCreateView = messageView;
-    [self updateMessageFrame];
-    [self.view addSubview:messageView];
+    RAC(self.conversationViewModel, messageToSend) = self.messageCreateView.messageToSendLabel.rac_textSignal;
+    self.messageCreateView.sendMessageButton.rac_command = self.conversationViewModel.sendMessageCommand;
+    
+    [[self.conversationViewModel.sendMessageCommand.executionSignals flattenMap:^RACStream *(RACSignal *subscribedSignal) {
+        return [[subscribedSignal ignoreValues] concat:[RACSignal return:RACUnit.defaultUnit]];
+    }] subscribeNext:^(id x) {
+        NSLog(@"Done");
+    }];
+    
+
 }
 
 - (void)didReceiveMemoryWarning

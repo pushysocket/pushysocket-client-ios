@@ -13,6 +13,11 @@
 @interface PSConversationViewModel : NSObject < PSClientDelegate >
 
 @property (nonatomic, strong) PSClient * client;
+@property (nonatomic, strong) RACCommand *sendMessageCommand;
+
+// write to this property
+@property (nonatomic, copy) NSString *messageToSend;
+
 
 @property (nonatomic, strong) NSMutableArray *messages;
 

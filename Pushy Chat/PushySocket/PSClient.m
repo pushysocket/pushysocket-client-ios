@@ -40,6 +40,7 @@ static BOOL PushySocketSecure = NO;
     _loggedIn = NO;
     
     _socketIO = [[AZSocketIO alloc] initWithHost:_host andPort:_port secure:_secure withNamespace:@"/chat"];
+    //_socketIO = [[AZSocketIO alloc] initWithHost:_host andPort:_port secure:_secure withNamespace:@""];
     
     @weakify(self)
     [_socketIO setEventRecievedBlock:^(NSString *eventName, id data) {
@@ -75,15 +76,19 @@ static BOOL PushySocketSecure = NO;
     
     NSError *anError = nil;
     BOOL success = [_socketIO emit:@"login" args:@{@"name":@"ios"} error:&anError];
-    NSLog(@"anError: %@", anError);
+    if (anError) NSLog(@"anError: %@", anError);
     
     self.loggedIn = success;
     
     return success;
 }
 
-- (void)sendMessage:(NSString *)message {
-    [_socketIO send:message error:nil];
+- (BOOL)sendMessage:(NSString *)message {
+    NSError *anError = nil;
+    BOOL success = [_socketIO emit:@"message" args:@{@"message":message} error:&anError];
+    if (anError) NSLog(@"anError: %@", anError);
+    
+    return success;
 }
 
 

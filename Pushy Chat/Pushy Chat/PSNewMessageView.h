@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface PSNewMessageView : UIView
+@property (weak, nonatomic) IBOutlet UITextField *messageToSendLabel;
+@property (weak, nonatomic) IBOutlet UIButton *sendMessageButton;
 
 + (NSString *)reuseIdentifier;
 + (NSString *)viewKind;

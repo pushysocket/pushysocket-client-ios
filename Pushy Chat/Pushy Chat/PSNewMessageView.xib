@@ -35,6 +35,10 @@
                 <constraint firstItem="irB-TH-LrD" firstAttribute="centerY" secondItem="cnH-3H-1g1" secondAttribute="centerY" id="UFm-fb-quX"/>
                 <constraint firstItem="e8G-WS-APy" firstAttribute="leading" secondItem="cnH-3H-1g1" secondAttribute="leading" constant="20" symbolic="YES" id="oZk-bC-ZeK"/>
             </constraints>
+            <connections>
+                <outlet property="messageToSendLabel" destination="e8G-WS-APy" id="8QO-gk-H57"/>
+                <outlet property="sendMessageButton" destination="irB-TH-LrD" id="ceF-a1-P5g"/>
+            </connections>
         </view>
     </objects>
 </document>
