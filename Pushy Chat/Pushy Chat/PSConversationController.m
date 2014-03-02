@@ -16,7 +16,7 @@
 
 #import "PSMessage.h"
 
-static const CGFloat PushySocketNewMessageViewHeight = 44.f;
+static const CGFloat PushySocketNewMessageViewHeight = 51.f;
 
 @interface PSConversationController ()
 

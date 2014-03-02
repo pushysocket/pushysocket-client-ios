@@ -19,11 +19,30 @@
     [application setStatusBarStyle:UIStatusBarStyleLightContent];
     
     self.pushySocketClient = [[PSClientAZSocketIO alloc] init];
+    
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound];
 //    self.pushySocketClient = [[PSClientSocketIO alloc] init];
     
     return YES;
 }
-							
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    NSLog(@"Received Push Notification");
+    NSLog(@"-- %@ --", userInfo);
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    self.pushySocketClient.pushRegistrationToken = [deviceToken description];
+    NSLog(@"Registered for Push Notifications");
+    NSLog(@"-- %@ --", self.pushySocketClient.pushRegistrationToken);
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"Failed to Register For Push Notifications");
+    NSLog(@"-- ERROR --");
+    NSLog(@"%@", [error localizedDescription]);
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

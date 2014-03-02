@@ -55,7 +55,7 @@
     if (!self.connected) return NO;
     
     NSError *anError = nil;
-    BOOL success = [_socketIO emit:@"login" args:@{@"name":name} error:&anError];
+    BOOL success = [_socketIO emit:@"login" args:@{@"id":self.clientId, @"name":name, @"device":self.pushRegistrationToken} error:&anError];
     if (anError) NSLog(@"anError: %@", anError);
     
     self.loggedIn = success;

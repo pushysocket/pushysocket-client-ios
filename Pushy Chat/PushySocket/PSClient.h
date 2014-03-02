@@ -31,6 +31,7 @@
 @property (nonatomic, assign, getter = isSecure) BOOL secure;
 
 @property (nonatomic, copy) NSString *clientId;
+@property (nonatomic, copy) NSString *pushRegistrationToken;
 
 @property (nonatomic, weak) id<PSClientDelegate> delegate;
 
