@@ -28,6 +28,7 @@
 
 @interface PSChatMessage : NSObject < PSMessageProtocol >
 
+@property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, copy) NSString *message;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSDate *timestamp;

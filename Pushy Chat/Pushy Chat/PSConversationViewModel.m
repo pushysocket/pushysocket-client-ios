@@ -92,8 +92,30 @@
 }
 
 - (void)client:(PSClient *)theClient didReceiveMessages:(NSArray *)messages {
-    [self.messages addObjectsFromArray:messages];
-    [_messageReceivedSubscriber sendNext:messages];
+    @weakify(self);
+    RACSequence *messages_seq = [messages.rac_sequence filter:^BOOL(id<PSMessageProtocol> maybeNewMessage) {
+        @strongify(self);
+        [self.messages.rac_sequence objectPassingTest:^BOOL(id<PSMessageProtocol> existingMessage) {
+            BOOL sameClass = [maybeNewMessage isKindOfClass:[existingMessage class]];
+            BOOL isChatMessage = [maybeNewMessage isKindOfClass:[PSChatMessage class]];
+            
+            if (sameClass && isChatMessage) {
+                return [((PSChatMessage *)maybeNewMessage).identifier isEqualToString:((PSChatMessage *)existingMessage).identifier];
+            }
+            else if (sameClass) {
+                return [maybeNewMessage.timestamp isEqualToDate:existingMessage.timestamp];
+            }
+            else {
+                return NO;
+            }
+        }];
+    }];
+    
+    NSArray *newMessages = messages_seq.array;
+    if (newMessages) {
+        [self.messages addObjectsFromArray:newMessages];
+        [_messageReceivedSubscriber sendNext:newMessages];
+    }
 }
 
 @end

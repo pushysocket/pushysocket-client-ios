@@ -88,7 +88,8 @@ static const CGFloat PushySocketNewMessageViewHeight = 51.f;
             [indexPaths addObject:[NSIndexPath indexPathForRow:(lastRow + c) inSection:section]];
         }
         
-        [self.collectionView insertItemsAtIndexPaths:indexPaths];
+       [self.collectionView insertItemsAtIndexPaths:indexPaths];
+       [self.collectionView scrollToItemAtIndexPath:[indexPaths lastObject] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
     }];
     
     RAC(self.conversationViewModel, messageToSend) = self.messageCreateView.messageToSendLabel.rac_textSignal;

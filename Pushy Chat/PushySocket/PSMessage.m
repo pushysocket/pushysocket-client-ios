@@ -48,6 +48,7 @@
     PSChatMessage *chatMessage = [[PSChatMessage alloc] init];
     chatMessage.message = data[@"message"];
     chatMessage.name = data[@"user"][@"name"];
+    if (data[@"id"]) chatMessage.identifier = data[@"id"];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
@@ -60,6 +61,10 @@
 
 + (NSString *)messageType {
     return @"message";
+}
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%@(%@) - %@", self.identifier, self.message, self.timestamp];
 }
 
 @end
