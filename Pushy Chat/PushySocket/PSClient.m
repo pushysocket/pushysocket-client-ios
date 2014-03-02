@@ -35,11 +35,35 @@ static BOOL PushySocketSecure = NO;
     _loggedIn = NO;
     
     _clientId = [[NSUUID UUID] UUIDString];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationDidEnterBackground)
+                                                 name:UIApplicationDidEnterBackgroundNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationDidBecomeActive)
+                                                 name:UIApplicationDidBecomeActiveNotification
+                                               object:nil];
     return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (BOOL)sendMessage:(NSString *)message { NSAssert(YES, @"Need to use subclass"); return NO; }
 - (BOOL)loginWithName:(NSString *)name { NSAssert(YES, @"Need to use subclass"); return NO; }
 - (BOOL)refreshMessages { NSAssert(YES, @"Need to use subclass"); return NO; }
+- (BOOL)pauseChat { NSAssert(NO, @"Don't do that"); return NO; }
+- (BOOL)resumeChat { NSAssert(NO, @"Don't do that"); return NO; }
+
+- (void)applicationDidEnterBackground {
+    [self pauseChat];
+}
+
+- (void)applicationDidBecomeActive {
+    [self resumeChat];
+}
 
 @end

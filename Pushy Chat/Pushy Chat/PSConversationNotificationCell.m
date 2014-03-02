@@ -10,6 +10,8 @@
 
 @interface PSConversationNotificationCell ()
 
+@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
+
 @end
 
 @implementation PSConversationNotificationCell
@@ -21,6 +23,10 @@
         // Initialization code
     }
     return self;
+}
+
+- (void)awakeFromNib {
+    RAC(self.messageLabel, text) = RACObserve(self, message.message);
 }
 
 /*

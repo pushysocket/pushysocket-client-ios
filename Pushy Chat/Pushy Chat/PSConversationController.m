@@ -8,6 +8,7 @@
 
 #import "PSConversationController.h"
 
+#import "PSConversationNotificationCell.h"
 #import "PSConversationMessageCell.h"
 #import "PSNewMessageView.h"
 
@@ -166,11 +167,22 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    PSConversationMessageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"conversationCell" forIndexPath:indexPath];
-   
-    [cell setChatMessage:self.conversationViewModel.messages[indexPath.row]];
+    id<PSMessageProtocol> message = self.conversationViewModel.messages[indexPath.row];
     
-    return cell;
+    if ([message isKindOfClass:[PSChatMessage class]]) {
+        PSConversationMessageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"conversationCell" forIndexPath:indexPath];
+       
+        [cell setChatMessage:(PSChatMessage *)message];
+        
+        return cell;
+    }
+    else {
+        PSConversationNotificationCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"notificationCell" forIndexPath:indexPath];
+        [cell setMessage:message];
+        
+        return cell;
+    }
+    
 }
 
 @end

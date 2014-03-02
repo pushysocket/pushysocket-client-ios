@@ -10,10 +10,11 @@
 
 @protocol PSMessageProtocol <NSObject>
 
+@property (nonatomic, copy) NSString *message;
+
 + (id<PSMessageProtocol>)messageWithEvent:(NSString *)event andData:(id)data;
 
 + (NSString *)messageType;
-- (NSString *)message;
 - (NSString *)name;
 
 @end

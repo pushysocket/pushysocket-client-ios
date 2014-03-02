@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "PSMessage.h"
+
 @interface PSConversationNotificationCell : UICollectionViewCell
+
+@property (nonatomic, weak) id<PSMessageProtocol> message;
 
 @end

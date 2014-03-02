@@ -79,5 +79,19 @@
     return success;
 }
 
+- (BOOL)pauseChat {
+    NSError *anError = nil;
+    BOOL success = [_socketIO emit:@"pause" args:nil error:&anError];
+    if (anError) NSLog(@"anError: %@", anError);
+    
+    return success;
+}
 
+- (BOOL)resumeChat {
+    NSError *anError = nil;
+    BOOL success = [_socketIO emit:@"resume" args:nil error:&anError];
+    if (anError) NSLog(@"anError: %@", anError);
+    
+    return success;
+}
 @end

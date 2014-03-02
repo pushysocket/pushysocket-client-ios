@@ -28,10 +28,10 @@
         messages = @[[PSChatMessage messageWithEvent:event andData:data[0]]];
     }
     else if ([event isEqualToString:@"left"]) {
-        
+        messages = @[[PSLeftMessage messageWithEvent:event andData:data[0]]];
     }
     else if ([event isEqualToString:@"join"]) {
-        
+        messages = @[[PSJoinedMessage messageWithEvent:event andData:data[0]]];
     }
     else {
         NSLog(@"Warning: Did not handle message");
@@ -59,10 +59,32 @@
 @end
 
 @implementation PSJoinedMessage
++ (id<PSMessageProtocol>)messageWithEvent:(NSString *)event andData:(id)data {
+    PSJoinedMessage *joinMessage = [[PSJoinedMessage alloc] init];
+    joinMessage.message = data[@"message"];
+    joinMessage.name = data[@"user"][@"name"];
+    
+    return joinMessage;
+}
 
++ (NSString *)messageType {
+    return @"join";
+}
 @end
 
 @implementation PSLeftMessage
+
++ (id<PSMessageProtocol>)messageWithEvent:(NSString *)event andData:(id)data {
+    PSLeftMessage *leftMessage = [[PSLeftMessage alloc] init];
+    leftMessage.message = data[@"message"];
+    leftMessage.name = data[@"user"][@"name"];
+    
+    return leftMessage;
+}
+
++ (NSString *)messageType {
+    return @"join";
+}
 
 @end
 
