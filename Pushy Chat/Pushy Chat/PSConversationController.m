@@ -16,6 +16,8 @@
 
 #import "PSMessage.h"
 
+static const CGFloat PushySocketNewMessageViewHeight = 44.f;
+
 @interface PSConversationController ()
 
 @property (nonatomic, assign) CGFloat keyboardHeight;
@@ -75,6 +77,7 @@
     [self updateMessageFrame];
     [self.view addSubview:messageView];
     
+
     [self.conversationViewModel.rac_signalForMessagesReceived subscribeNext:^(NSArray *messages) {
         NSInteger section = 0;
         NSInteger lastRow = [self.collectionView numberOfItemsInSection:section];
@@ -108,12 +111,14 @@
 }
 
 - (void)updateMessageFrame {
-    CGFloat textFieldHeight = 44.f;
     CGFloat x = 0.f;
-    CGFloat adjustedY = CGRectGetHeight(self.view.bounds) - _keyboardHeight - textFieldHeight;
+    CGFloat adjustedY = CGRectGetHeight(self.view.bounds) - _keyboardHeight - PushySocketNewMessageViewHeight;
     
-    CGRect messageFrame = CGRectMake(x, adjustedY, CGRectGetWidth(self.collectionView.bounds), textFieldHeight);
+    CGRect messageFrame = CGRectMake(x, adjustedY, CGRectGetWidth(self.collectionView.bounds), PushySocketNewMessageViewHeight);
     [self.messageCreateView setFrame:messageFrame];
+    
+    UIEdgeInsets oldInsets = self.collectionView.contentInset;
+    self.collectionView.contentInset = UIEdgeInsetsMake(oldInsets.top, oldInsets.left, (_keyboardHeight + PushySocketNewMessageViewHeight), oldInsets.right);
 }
 
 
