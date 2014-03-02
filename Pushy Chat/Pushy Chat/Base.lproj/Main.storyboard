@@ -8,9 +8,9 @@
         <scene sceneID="alz-O9-MKg">
             <objects>
                 <navigationController definesPresentationContext="YES" id="APF-jo-CGc" customClass="CRNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M8X-d8-Wdm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="M8X-d8-Wdm">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.27450981736183167" green="0.80784320831298828" blue="0.44313728809356689" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="barTintColor" red="0.10588236153125763" green="0.12156863510608673" blue="0.13725490868091583" alpha="1" colorSpace="deviceRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="xAU-kw-XFT" kind="relationship" relationship="rootViewController" id="Q6q-xm-Cm4"/>
@@ -29,7 +29,7 @@
                         <viewControllerLayoutGuide type="bottom" id="rI1-90-E2H"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FJL-Ng-yhX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3iu-u1-qxS">
