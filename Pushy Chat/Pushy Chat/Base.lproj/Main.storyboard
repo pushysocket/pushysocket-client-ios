@@ -176,7 +176,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kdn-Fc-8IJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="967" y="270"/>
+            <point key="canvasLocation" x="957" y="270"/>
         </scene>
     </scenes>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -30,6 +30,8 @@
 		870BC2BD18C28DE100BC9F6D /* PSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 870BC2BC18C28DE100BC9F6D /* PSLoginViewController.m */; };
 		870BC30818C2D3ED00BC9F6D /* PSLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 870BC30718C2D3ED00BC9F6D /* PSLoginViewModel.m */; };
 		870BC30B18C2EB2300BC9F6D /* PSConversationViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 870BC30A18C2EB2300BC9F6D /* PSConversationViewLayout.m */; };
+		870BC30D18C2F3B500BC9F6D /* PSNewMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 870BC30C18C2F3B500BC9F6D /* PSNewMessageView.xib */; };
+		870BC31018C2F43C00BC9F6D /* PSNewMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 870BC30F18C2F43C00BC9F6D /* PSNewMessageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,9 @@
 		870BC30718C2D3ED00BC9F6D /* PSLoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSLoginViewModel.m; sourceTree = "<group>"; };
 		870BC30918C2EB2300BC9F6D /* PSConversationViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSConversationViewLayout.h; sourceTree = "<group>"; };
 		870BC30A18C2EB2300BC9F6D /* PSConversationViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSConversationViewLayout.m; sourceTree = "<group>"; };
+		870BC30C18C2F3B500BC9F6D /* PSNewMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PSNewMessageView.xib; sourceTree = "<group>"; };
+		870BC30E18C2F43C00BC9F6D /* PSNewMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSNewMessageView.h; sourceTree = "<group>"; };
+		870BC30F18C2F43C00BC9F6D /* PSNewMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSNewMessageView.m; sourceTree = "<group>"; };
 		9F900D516E0D42C4B91AF43F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		C0DA22EC391F4FC094B1AD2A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -204,6 +209,9 @@
 				870BC28C18C1A9AB00BC9F6D /* PSConversationMessageCell.m */,
 				870BC30918C2EB2300BC9F6D /* PSConversationViewLayout.h */,
 				870BC30A18C2EB2300BC9F6D /* PSConversationViewLayout.m */,
+				870BC30C18C2F3B500BC9F6D /* PSNewMessageView.xib */,
+				870BC30E18C2F43C00BC9F6D /* PSNewMessageView.h */,
+				870BC30F18C2F43C00BC9F6D /* PSNewMessageView.m */,
 			);
 			name = "Conversation View";
 			sourceTree = "<group>";
@@ -311,6 +319,7 @@
 			files = (
 				870BC26418C1A1DA00BC9F6D /* Images.xcassets in Resources */,
 				870BC25618C1A1DA00BC9F6D /* InfoPlist.strings in Resources */,
+				870BC30D18C2F3B500BC9F6D /* PSNewMessageView.xib in Resources */,
 				870BC25F18C1A1DA00BC9F6D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,6 +374,7 @@
 			files = (
 				870BC25818C1A1DA00BC9F6D /* main.m in Sources */,
 				870BC30818C2D3ED00BC9F6D /* PSLoginViewModel.m in Sources */,
+				870BC31018C2F43C00BC9F6D /* PSNewMessageView.m in Sources */,
 				870BC30B18C2EB2300BC9F6D /* PSConversationViewLayout.m in Sources */,
 				870BC28A18C1A97100BC9F6D /* PSConversationViewModel.m in Sources */,
 				870BC25C18C1A1DA00BC9F6D /* PSAppDelegate.m in Sources */,
