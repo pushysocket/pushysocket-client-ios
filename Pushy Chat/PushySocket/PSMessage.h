@@ -16,6 +16,7 @@
 
 + (NSString *)messageType;
 - (NSString *)name;
+- (NSDate *)timestamp;
 
 @end
 
@@ -37,6 +38,7 @@
 
 @property (nonatomic, copy) NSString *message;
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSDate *timestamp;
 
 @end
 
@@ -44,5 +46,6 @@
 
 @property (nonatomic, copy) NSString *message;
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSDate *timestamp;
 
 @end

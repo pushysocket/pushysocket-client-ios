@@ -10,6 +10,8 @@
 
 #import "PSMessage.h"
 
+#import <NSDate+RelativeTime.h>
+
 @interface PSConversationMessageCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -39,7 +41,10 @@
     RAC(self.messageLabel, text) = RACObserve(self, chatMessage.message);
     RAC(self.nameLabel, text) = RACObserve(self, chatMessage.name);
     RAC(self.timestampLabel, text) = [RACObserve(self, chatMessage.timestamp) map:^id(NSDate * timestamp) {
-        return [dateFormatter stringFromDate:timestamp];
+        if (timestamp)
+            return [timestamp relativeTime];
+        else
+            return @"";
     }];
 }
 
